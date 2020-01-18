@@ -18,7 +18,7 @@
 					$week_start = date('Y-m-d', strtotime('-'.$day + 1 .' days'));
 					$week_end = date('Y-m-d', strtotime('+'.(6-$day + 1 ).' days'));
 					
-					$servername = "https://kip.ovh";
+					$servername = "kip.ovh";
 					$servername = "port";
                     $port = "3306";
 					$username = "root";
