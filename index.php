@@ -18,13 +18,15 @@
 					$week_start = date('Y-m-d', strtotime('-'.$day + 1 .' days'));
 					$week_end = date('Y-m-d', strtotime('+'.(6-$day + 1 ).' days'));
 					
-					$servername = "localhost";
+					$servername = "kip.ovh";
+					$servername = "port";
+                    $port = "3306";
 					$username = "root";
 					$password = "javi#1234";
 					$dbname = "futbol";
 					
 					try {
-						$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+						$conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						$stmt = $conn->prepare("SELECT * FROM partidos WHERE estado != 'FINISHED'");
 						$stmt->execute();
