@@ -18,23 +18,21 @@
 					$week_start = date('Y-m-d', strtotime('-'.$day + 1 .' days'));
 					$week_end = date('Y-m-d', strtotime('+'.(6-$day + 1 ).' days'));
 					
-					$servername = "kip.ovh";
-					$servername = "port";
+					$servername = "93.186.255.101";
                     $port = "3306";
 					$username = "root";
 					$password = "javi#1234";
 					$dbname = "futbol";
 					
 					try {
-						$conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
-						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+						$conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);						
 						$stmt = $conn->prepare("SELECT * FROM partidos WHERE estado != 'FINISHED'");
 						$stmt->execute();
 
 						// set the resulting array to associative
 						$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-						foreach(RecursiveArrayIterator($stmt->fetchAll()) as $k=>$v) {
-							echo $v;
+						foreach($stmt->fetchAll() as $k=>$v) {
+							
 						}
 					}
 					catch(PDOException $e){
